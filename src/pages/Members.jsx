@@ -4,6 +4,7 @@ import SectionWrapper from "../components/SectionWrapper";
 import { getMembers, createMember } from "../api/members";
 import { getMemberAssignments } from "../api/commissioners";
 import Declaration from "../components/Declaration";
+import { resolveFileUrl } from "../utils/resolveFileUrl";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import {
@@ -102,7 +103,7 @@ function MemberCard({ member, isCommissioner }) {
   const [imgError, setImgError] = useState(false);
   const imgSrc =
     member.photo && !imgError
-      ? `${import.meta.env.VITE_API_URL}${member.photo}`
+      ? resolveFileUrl(member.photo)
       : null;
 
   const showCopBadge = member.copStatus && member.status === "Approved";
@@ -202,7 +203,7 @@ function MemberCard({ member, isCommissioner }) {
 function PaymentGate({ isMobile, onConfirmed, onClose, upiId, upiPayee }) {
   const [memType, setMemType] = useState("");
   const amount = memType ? MEMBERSHIP_FEES[memType] : "";
-  const targetUpiId = upiId || "8299177208@upi";
+  const targetUpiId = upiId || "";
   const targetPayee = upiPayee || "DRT BAR ASSOCIATION";
 
   const generatedUpiLink = memType

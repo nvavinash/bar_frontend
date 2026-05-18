@@ -29,6 +29,7 @@ import axios from "axios";
 import { getEvents, createEvent, updateEvent, deleteEvent } from "@/api/events";
 import { getAllMembersAdmin, updateMember, deleteMember, downloadMemberPdf } from "@/api/members";
 import { format, parseISO } from "date-fns";
+import { resolveFileUrl } from "@/utils/resolveFileUrl";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -366,7 +367,7 @@ export default function AdminDashboard() {
                             <div className="flex items-center gap-3">
                               <div className="w-9 h-9 rounded-full bg-zinc-100 overflow-hidden flex-shrink-0 border border-zinc-200">
                                 {m.photo ? (
-                                  <img src={`${import.meta.env.VITE_API_URL}${m.photo}`} alt={m.name} className="w-full h-full object-cover" />
+                                  <img src={resolveFileUrl(m.photo)} alt={m.name} className="w-full h-full object-cover" />
                                 ) : (
                                   <div className="w-full h-full flex items-center justify-center text-xs font-bold text-zinc-500">
                                     {m.name?.charAt(0)}
@@ -478,7 +479,7 @@ export default function AdminDashboard() {
                                 <div className="col-span-2"><span className="text-xs text-zinc-400 block">Transaction No.</span><span className="font-mono text-zinc-700">{m.transactionNumber || "—"}</span></div>
                                 <div><span className="text-xs text-zinc-400 block">Applied</span><span className="text-zinc-700">{m.createdAt ? format(parseISO(m.createdAt), 'MMM d, yyyy') : "—"}</span></div>
                                 <div><span className="text-xs text-zinc-400 block">COP Status</span><span className={`font-bold ${m.copStatus ? 'text-amber-600' : 'text-zinc-400'}`}>{m.copStatus ? 'Enabled ✓' : 'Disabled'}</span></div>
-                                <div><span className="text-xs text-zinc-400 block">Bar Council Certificate</span>{m.barCertificate ? (<a href={`${import.meta.env.VITE_API_URL}${m.barCertificate}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs font-medium">View Certificate ↗</a>) : (<span className="text-zinc-400 text-xs">Not uploaded</span>)}</div>
+                                <div><span className="text-xs text-zinc-400 block">Bar Council Certificate</span>{m.barCertificate ? (<a href={resolveFileUrl(m.barCertificate)} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs font-medium">View Certificate ↗</a>) : (<span className="text-zinc-400 text-xs">Not uploaded</span>)}</div>
                               </div>
                             </TableCell>
                           </TableRow>

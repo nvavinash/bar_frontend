@@ -5,6 +5,7 @@ import { getEvents } from "../api/events";
 import { Calendar, Search, FileText } from "lucide-react";
 import { format, parseISO } from "date-fns";
 import { Link } from "react-router-dom";
+import { resolveFileUrl } from "../utils/resolveFileUrl";
 
 const NoticesPage = () => {
   const [events, setEvents] = useState([]);
@@ -87,7 +88,7 @@ const NoticesPage = () => {
                         {format(parseISO(notice.date), 'EEEE, MMMM d, yyyy')}
                       </div>
                       {notice.pdf && (
-                        <a href={`${import.meta.env.VITE_API_URL}${notice.pdf}`} target="_blank" rel="noreferrer" className="text-xs font-bold bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-zinc-800 transition shadow">
+                        <a href={resolveFileUrl(notice.pdf)} target="_blank" rel="noreferrer" className="text-xs font-bold bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-zinc-800 transition shadow">
                           View PDF
                         </a>
                       )}

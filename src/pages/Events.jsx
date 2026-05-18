@@ -6,6 +6,7 @@ import { getEvents } from "../api/events";
 import { Calendar, Clock, MapPin, Search, Filter, ArrowRight } from "lucide-react";
 import { format, isAfter, isBefore, isSameDay, parseISO } from "date-fns";
 import { Link } from "react-router-dom";
+import { resolveFileUrl } from "../utils/resolveFileUrl";
 
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
@@ -158,7 +159,7 @@ const EventsPage = () => {
                             {format(parseISO(event.date), 'EEEE, MMMM d, yyyy')}
                           </div>
                           {event.pdf && (
-                            <a href={`${import.meta.env.VITE_API_URL}${event.pdf}`} target="_blank" rel="noreferrer" className="text-xs font-bold bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-zinc-800 transition shadow">
+                            <a href={resolveFileUrl(event.pdf)} target="_blank" rel="noreferrer" className="text-xs font-bold bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-zinc-800 transition shadow">
                               View PDF
                             </a>
                           )}
