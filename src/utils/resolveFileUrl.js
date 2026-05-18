@@ -9,12 +9,25 @@
  *   import { resolveFileUrl } from '../utils/resolveFileUrl';
  *   <img src={resolveFileUrl(member.photo)} />
  */
-export function resolveFileUrl(path) {
-  if (!path) return null;
-  // Already a full URL (Cloudinary, S3, or any CDN)
-  if (path.startsWith("http://") || path.startsWith("https://")) {
-    return path;
+export function resolveFileUrl(filePath) {
+  if (!filePath) return null;
+
+  // Fix malformed Cloudinary URLs
+  if (filePath.startsWith("https//")) {
+    filePath = filePath.replace("https//", "https://");
   }
-  // Legacy local path — prepend the backend origin
-  return `${import.meta.env.VITE_API_URL}${path}`;
+
+  if (
+    filePath.startsWith("http://") ||
+    filePath.startsWith("https://")
+  ) {
+    return filePath;
+  }
+
+  const normalizedPath = filePath.startsWith("/")
+    ? filePath
+    : `/${filePath}`;
+
+  // return `${import.meta.env.VITE_API_URL}${normalizedPath}`;
+  return `${normalizedPath}`
 }
