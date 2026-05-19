@@ -107,10 +107,7 @@ const NoticesPage = () => {
                       </div>
                       {notice.pdf && (
                         <a
-                          href={resolveFileUrl(notice.pdf).replace(
-                            "/raw/upload/",
-                            "/raw/upload/fl_inline/",
-                          )}
+                          href={`${resolveFileUrl(notice.pdf)}.pdf`}
                           target="_blank"
                           rel="noreferrer"
                           className="text-xs font-bold bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-zinc-800 transition shadow"
