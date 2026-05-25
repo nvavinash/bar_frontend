@@ -53,27 +53,25 @@ const Announcements = () => {
       <div className="flex flex-col gap-4">
         {loading ? (
           <div className="space-y-4">
-            {[1,2,3].map(i => <div key={i} className="h-24 bg-zinc-100 rounded-2xl animate-pulse"></div>)}
+            {[1, 2, 3].map(i => <div key={i} className="h-24 bg-zinc-100 rounded-2xl animate-pulse"></div>)}
           </div>
         ) : announcements.map((item) => (
-          <AnimatedCard 
-            key={item._id} 
+          <AnimatedCard
+            key={item._id}
             className="group hover:border-primary/30 transition-all duration-300 bg-white"
           >
             <div className="p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-              <div className={`w-12 h-12 shrink-0 rounded-xl flex items-center justify-center transition-colors duration-300 ${
-                item.type === 'event' 
-                ? 'bg-red-50 text-red-600 group-hover:bg-red-600 group-hover:text-white' 
-                : 'bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white'
-              }`}>
+              <div className={`w-12 h-12 shrink-0 rounded-xl flex items-center justify-center transition-colors duration-300 ${item.type === 'event'
+                  ? 'bg-red-50 text-red-600 group-hover:bg-red-600 group-hover:text-white'
+                  : 'bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white'
+                }`}>
                 {item.type === 'event' ? <Calendar size={24} /> : <FileText size={24} />}
               </div>
 
               <div className="flex-1">
                 <div className="flex flex-wrap items-center gap-3 mb-2">
-                  <span className={`text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full ${
-                    item.type === 'event' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
-                  }`}>
+                  <span className={`text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full ${item.type === 'event' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
+                    }`}>
                     {item.type}
                   </span>
                   <div className="text-sm text-zinc-400 flex items-center gap-1.5">
@@ -90,18 +88,18 @@ const Announcements = () => {
               </div>
 
               <div className="flex items-center gap-3 text-zinc-400 md:ml-4">
-                 {item.pdf ? (
-                   <a href={resolveFileUrl(item.pdf)} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm font-medium text-primary md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-                      View PDF <ExternalLink size={16} />
-                   </a>
-                 ) : (
-                   <Link to={`/events/${item._id}`} className="flex items-center gap-2 text-sm font-medium text-primary md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-                      Read More <ChevronRight size={16} />
-                   </Link>
-                 )}
-                 <div className="hidden md:block">
-                    <ChevronRight className="group-hover:translate-x-1 transition-transform" />
-                 </div>
+                {item.pdf ? (
+                  <a href={resolveFileUrl(item.pdf)} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm font-medium text-primary md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                    View PDF <ExternalLink size={16} />
+                  </a>
+                ) : (
+                  <Link to={`/events/${item._id}`} className="flex items-center gap-2 text-sm font-medium text-primary md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                    Read More <ChevronRight size={16} />
+                  </Link>
+                )}
+                <div className="hidden">
+                  <ChevronRight className="group-hover:translate-x-1 transition-transform" />
+                </div>
               </div>
             </div>
           </AnimatedCard>
