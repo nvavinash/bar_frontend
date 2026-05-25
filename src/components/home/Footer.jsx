@@ -84,7 +84,7 @@ const Footer = () => {
 
           <div className="space-y-3">
             <div className="flex items-start gap-3 text-sm text-zinc-400">
-              <MapPin size={15} className="text-primary mt-0.5 flex-shrink-0" />
+              <MapPin size={15} className="text-red-500 mt-0.5 flex-shrink-0" />
               <span className="leading-relaxed">
                 1st Floor, Triveni Complex, Abids,
                 <br />
@@ -92,7 +92,7 @@ const Footer = () => {
               </span>
             </div>
             <div className="flex items-center gap-3 text-sm text-zinc-400">
-              <Phone size={15} className="text-primary flex-shrink-0" />
+              <Phone size={15} className="text-red-500 flex-shrink-0" />
               <a
                 href="tel:+919000000000"
                 className="hover:text-white transition-colors"
@@ -101,12 +101,12 @@ const Footer = () => {
               </a>
             </div>
             <div className="flex items-center gap-3 text-sm text-zinc-400">
-              <Mail size={15} className="text-primary flex-shrink-0" />
+              <Mail size={15} className="text-red-500 flex-shrink-0" />
               <a
-                href="mailto:info@drtadvocateshyd.in"
+                href="mailto:drtaahyd@gmail.com"
                 className="hover:text-white transition-colors"
               >
-                info@drtadvocateshyd.in
+                drtaahyd@gmail.com
               </a>
             </div>
           </div>
