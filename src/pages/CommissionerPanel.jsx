@@ -25,6 +25,7 @@ import {
   AlertCircle,
   CheckCircle2,
   Clock,
+  LogOut,
   User,
   RefreshCw,
   History,
@@ -44,10 +45,10 @@ const APPOINTED_BY = ["DRT-1 RO1", "DRT-1 RO2", "DRT-2 RO1", "DRT-2 RO2"];
 const fmtDate = (d) =>
   d
     ? new Date(d).toLocaleDateString("en-IN", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    })
     : "—";
 
 function Badge({ children, color = "zinc" }) {
@@ -145,6 +146,12 @@ export default function CommissionerPanel() {
     } finally {
       setAssigning(false);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    navigate("/");
   };
 
   const handleReset = async () => {
@@ -270,7 +277,7 @@ export default function CommissionerPanel() {
               • {eligible.total} eligible members
             </p>
           </div>
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex-1 gap-2 flex-wrap flex items-center justify-between">
             {isAdmin && (
               <Button
                 onClick={handleReset}
@@ -289,13 +296,17 @@ export default function CommissionerPanel() {
             >
               <Download className="w-4 h-4" /> Export CSV
             </Button> */}
-
             <Button
               onClick={exportExcel}
               variant="outline"
               className="border-red-200 rounded-xl gap-2 text-zinc-700"
             >
               <Download className="w-4 h-4" /> Export Excel
+            </Button>
+
+            <Button variant="ghost" onClick={handleLogout} className="text-zinc-500 hover:text-rose-600 transition-colors">
+              <LogOut className="w-4 h-4 mr-2" />
+              Sign Out
             </Button>
           </div>
         </div>

@@ -3,17 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { 
-  Scale, 
-  LogOut, 
-  Users, 
-  Video, 
-  Save, 
-  CheckCircle, 
-  Calendar, 
-  Plus, 
-  Pencil, 
-  Trash2, 
+import {
+  Scale,
+  LogOut,
+  Users,
+  Video,
+  Save,
+  CheckCircle,
+  Calendar,
+  Plus,
+  Pencil,
+  Trash2,
   X,
   Clock,
   MapPin,
@@ -41,8 +41,8 @@ export default function AdminDashboard() {
   const [expandedMember, setExpandedMember] = useState(null);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [virtualLinks, setVirtualLinks] = useState({ 
-    drat_link: "", drt1_link: "", drt2_link: "", upi_id: "", upi_payee: "" 
+  const [virtualLinks, setVirtualLinks] = useState({
+    drat_link: "", drt1_link: "", drt2_link: "", upi_id: "", upi_payee: ""
   });
   const [updating, setUpdating] = useState(false);
   const [status, setStatus] = useState("");
@@ -167,7 +167,7 @@ export default function AdminDashboard() {
 
   const statusBadge = (s) => {
     const map = {
-      Pending:  "bg-amber-50 text-amber-700 border border-amber-200",
+      Pending: "bg-amber-50 text-amber-700 border border-amber-200",
       Approved: "bg-emerald-50 text-emerald-700 border border-emerald-200",
       Rejected: "bg-rose-50 text-rose-700 border border-rose-200",
     };
@@ -185,7 +185,7 @@ export default function AdminDashboard() {
     setUpdating(true);
     setStatus("");
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/virtual`, 
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/virtual`,
         { settings: virtualLinks },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -288,7 +288,7 @@ export default function AdminDashboard() {
             <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">Dashboard</h1>
             <p className="text-zinc-500 mt-1 text-sm font-medium">Manage association data and events from one place.</p>
           </div>
-          
+
           <div className="flex bg-white p-1 rounded-2xl border border-zinc-200 shadow-sm self-start">
             <button
               onClick={() => setActiveTab("members")}
@@ -328,11 +328,10 @@ export default function AdminDashboard() {
                     <button
                       key={f}
                       onClick={() => setMemberFilter(f)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize transition-all ${
-                        memberFilter === f
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize transition-all ${memberFilter === f
                           ? "bg-white shadow text-zinc-900 border border-zinc-200"
                           : "text-zinc-400 hover:text-zinc-700"
-                      }`}
+                        }`}
                     >
                       {f === "all" ? `All (${memberApplications.length})` : `${f} (${memberApplications.filter(m => m.status === f).length})`}
                     </button>
@@ -399,7 +398,7 @@ export default function AdminDashboard() {
                               </span>
                             ) : (
                               <span className="bg-zinc-100 text-zinc-400 px-2 py-0.5 rounded-full text-[10px] font-bold">
-                                —
+                                NO
                               </span>
                             )}
                           </TableCell>
@@ -444,11 +443,10 @@ export default function AdminDashboard() {
                               )}
                               <button
                                 onClick={() => handleCopToggle(m._id, m.copStatus)}
-                                className={`h-8 w-8 flex items-center justify-center rounded-lg transition ${
-                                  m.copStatus
+                                className={`h-8 w-8 flex items-center justify-center rounded-lg transition ${m.copStatus
                                     ? "text-amber-500 bg-amber-50 hover:bg-amber-100"
                                     : "text-zinc-300 hover:text-amber-500 hover:bg-amber-50"
-                                }`}
+                                  }`}
                                 title={m.copStatus ? "Disable COP" : "Enable COP"}
                               >
                                 <Award size={15} />
@@ -571,8 +569,8 @@ export default function AdminDashboard() {
                       </div>
                     </div>
                   </div>
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     disabled={updating}
                     className="w-full bg-zinc-900 text-white hover:bg-zinc-800 transition-all py-7 rounded-2xl font-bold text-base shadow-lg shadow-zinc-200"
                   >
@@ -604,7 +602,7 @@ export default function AdminDashboard() {
                     <CardTitle className="text-xl font-bold">Event/Notice Management</CardTitle>
                     <CardDescription className="text-sm font-medium">Create and manage upcoming activities and seminars.</CardDescription>
                   </div>
-                  <Button 
+                  <Button
                     onClick={() => { resetEventForm(); setIsEventModalOpen(true); }}
                     className="bg-zinc-900 text-white hover:bg-zinc-800 rounded-xl px-6"
                   >
@@ -649,17 +647,17 @@ export default function AdminDashboard() {
                             </TableCell>
                             <TableCell className="pr-8 py-6 text-right">
                               <div className="flex justify-end gap-2">
-                                <Button 
-                                  variant="ghost" 
-                                  size="sm" 
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
                                   onClick={() => openEditModal(event)}
                                   className="h-9 w-9 p-0 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 rounded-lg"
                                 >
                                   <Pencil size={16} />
                                 </Button>
-                                <Button 
-                                  variant="ghost" 
-                                  size="sm" 
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
                                   onClick={() => handleDeleteEvent(event._id)}
                                   className="h-9 w-9 p-0 text-zinc-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg"
                                 >
@@ -696,7 +694,7 @@ export default function AdminDashboard() {
                 <X size={20} />
               </button>
             </div>
-            
+
             <div className="p-8 overflow-y-auto max-h-[calc(90vh-140px)]">
               <form onSubmit={handleEventSubmit} className="space-y-6">
                 <div className="space-y-2">
@@ -763,8 +761,8 @@ export default function AdminDashboard() {
                 </div>
 
                 <div className="pt-4 pb-8">
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     disabled={updating}
                     className="w-full bg-zinc-900 text-white hover:bg-zinc-800 py-7 rounded-2xl font-bold text-base shadow-xl shadow-zinc-200 transition-all"
                   >

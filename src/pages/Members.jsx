@@ -102,9 +102,7 @@ function getInitials(name = "") {
 function MemberCard({ member, isCommissioner }) {
   const [imgError, setImgError] = useState(false);
   const imgSrc =
-    member.photo && !imgError
-      ? resolveFileUrl(member.photo)
-      : null;
+    member.photo && !imgError ? resolveFileUrl(member.photo) : null;
 
   const showCopBadge = member.copStatus && member.status === "Approved";
 
@@ -440,9 +438,9 @@ function RegistrationForm({ prefillType, onSuccess, onClose }) {
     setBarCertError("");
     const file = e.target.files?.[0];
     if (!file) return;
-    const allowed = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
+    const allowed = ["image/jpeg", "image/jpg", "image/png"];
     if (!allowed.includes(file.type)) {
-      setBarCertError("Only JPEG, PNG, or PDF files are allowed.");
+      setBarCertError("Only JPEG, PNG files are allowed.");
       return;
     }
     if (file.size > 100 * 1024) {
@@ -799,7 +797,7 @@ function RegistrationForm({ prefillType, onSuccess, onClose }) {
                       Click to upload Bar Council Certificate
                     </p>
                     <p className="text-xs text-zinc-400">
-                      JPEG / PNG / PDF · Max 100KB · Optional
+                      JPEG / PNG · Max 100KB · Optional
                     </p>
                   </div>
                 )}

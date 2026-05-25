@@ -116,25 +116,17 @@ const NoticesPage = () => {
                         </a>
                       )} */}
                       {notice.pdf &&
-                        (() => {
-                          const pdfUrl = resolveFileUrl(notice.pdf);
-
-                          const inlinePdfUrl = pdfUrl?.replace(
-                            "/raw/upload/",
-                            "/raw/upload/fl_inline/",
-                          );
-
-                          return (
-                            <a
-                              href={inlinePdfUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="text-xs font-bold bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-zinc-800 transition shadow"
-                            >
-                              View PDF
-                            </a>
-                          );
-                        })()}
+                        (
+                          <a
+                            href={resolveFileUrl(notice.pdf)}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-xs font-bold bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-zinc-800 transition shadow"
+                          >
+                            View PDF
+                          </a>
+                        )
+                      }
                     </div>
                   </div>
                 </div>
