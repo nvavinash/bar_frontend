@@ -6,6 +6,7 @@ import { Calendar, Search, FileText } from "lucide-react";
 import { format, parseISO } from "date-fns";
 import { Link } from "react-router-dom";
 import { resolveFileUrl } from "../utils/resolveFileUrl";
+import { Button } from "@/components/ui/button";
 
 const NoticesPage = () => {
   const [events, setEvents] = useState([]);
@@ -35,6 +36,16 @@ const NoticesPage = () => {
       return false;
     return true;
   });
+
+  const resolveFileUrl = (url) => {
+    if (!url) return "";
+
+    // Force inline preview instead of download
+    return url.replace(
+      "/upload/",
+      "/upload/fl_inline/"
+    );
+  };
 
   return (
     <div className="pt-24 bg-[#fafafa] min-h-screen pb-20">
@@ -105,17 +116,8 @@ const NoticesPage = () => {
                         <Calendar size={14} className="text-zinc-400" />
                         {format(parseISO(notice.date), "EEEE, MMMM d, yyyy")}
                       </div>
-                      {/* {notice.pdf && (
-                        <a
-                          href={`${resolveFileUrl(notice.pdf)}.pdf`}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-xs font-bold bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-zinc-800 transition shadow"
-                        >
-                          View PDF
-                        </a>
-                      )} */}
-                      {notice.pdf &&
+
+                      {/* {notice.pdf &&
                         (
                           <a
                             href={resolveFileUrl(notice.pdf)}
@@ -126,7 +128,13 @@ const NoticesPage = () => {
                             View PDF
                           </a>
                         )
-                      }
+                      } */}
+                      <Button
+                        onClick={() => window.open(notice.pdf, "_blank")}
+                        className="text-xs font-bold bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-zinc-800 transition shadow"
+                      >
+                        View PDF
+                      </Button>
                     </div>
                   </div>
                 </div>
