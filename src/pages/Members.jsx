@@ -776,7 +776,7 @@ function RegistrationForm({ prefillType, onSuccess, onClose }) {
               >
                 <input
                   type="file"
-                  accept="image/jpeg,image/png,application/pdf"
+                  accept="image/jpeg,image/png"
                   className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                   onChange={handleBarCert}
                 />
