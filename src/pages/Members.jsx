@@ -165,11 +165,11 @@ function MemberCard({ member, isCommissioner }) {
             </span>
           </div>
         )}
-        {member.experience != null && (
+        {member.ence != null && (
           <div className="flex items-center gap-2 text-xs text-zinc-600">
             <Briefcase className="w-3 h-3 flex-shrink-0 text-zinc-400" />
             <span>
-              {member.experience} yr{member.experience !== 1 ? "s" : ""}{" "}
+              {member.experience} +yr{member.experience !== 1 ? "s" : ""}{" "}
               experience
             </span>
           </div>
