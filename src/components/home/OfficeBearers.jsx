@@ -16,6 +16,13 @@ import Kranthikumar from "../../assets/kranthikumar.png";
 // import srikanthreddy from "../../assets/srikanthreddy.png";
 import Srikarreddy from "../../assets/srikarreddy.png";
 import Rameshs from "../../assets/rameshs.png";
+import asrin from "../../assets/ASRIN.jpeg";
+import avijay from "../../assets/AVIJAY.jpeg";
+import bbabita from "../../assets/BBABITA.jpeg";
+import vvdevi from "../../assets/VVDEVI.jpeg";
+import praje from "../../assets/PRAJE.jpeg";
+
+
 
 const officeBearers = [
   {
@@ -51,7 +58,7 @@ const officeBearers = [
     designation: "Joint Secretary",
     experience: "15+ Years",
     specialization: "Civil Litigation",
-    image: JointSecretary,
+    image: avijay,
     icon: <Award className="text-zinc-500" size={16} />,
   },
   {
@@ -60,7 +67,7 @@ const officeBearers = [
     designation: "Lady Representative",
     experience: "12+ Years",
     specialization: "Family & Property Law",
-    image: Ladyrepresentative,
+    image: praje,
     icon: <Scale className="text-purple-500" size={16} />,
   },
   {
@@ -114,7 +121,7 @@ const officeBearers = [
     designation: "Executive member",
     experience: "12+ Years",
     specialization: "Insolvency Law",
-    image: JointSecretary, // Placeholder until actual is uploaded
+    image: asrin, // Placeholder until actual is uploaded
     icon: <ShieldCheck className="text-emerald-500" size={16} />,
   },
   {
@@ -123,7 +130,7 @@ const officeBearers = [
     designation: "Executive member",
     experience: "12+ Years",
     specialization: "Insolvency Law",
-    image: Ladyrepresentative, // Placeholder until actual is uploaded
+    image: bbabita, // Placeholder until actual is uploaded
     icon: <ShieldCheck className="text-emerald-500" size={16} />,
   },
   {
@@ -132,7 +139,7 @@ const officeBearers = [
     designation: "Executive member",
     experience: "12+ Years",
     specialization: "Insolvency Law",
-    image: Ladyrepresentative, // Placeholder until actual is uploaded
+    image: vvdevi, // Placeholder until actual is uploaded
     icon: <ShieldCheck className="text-emerald-500" size={16} />,
   },
 ];
