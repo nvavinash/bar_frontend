@@ -27,6 +27,8 @@ import {
   FileText,
   Briefcase,
 } from "lucide-react";
+import phonepeLogo from "/PhonePe.webp";
+
 
 /* ─── Constants ───────────────────────────────────── */
 const DESKTOP_PER_PAGE = 100;
@@ -272,7 +274,7 @@ function PaymentGate({ isMobile, onConfirmed, onClose, upiId, upiPayee }) {
                     href={generatedUpiLink}
                     className="w-full text-center bg-slate-800 hover:bg-slate-900 text-white font-semibold py-4 px-6 rounded-xl transition-colors shadow-lg shadow-slate-900/20 text-lg flex items-center justify-center gap-2"
                   >
-                    <Smartphone className="w-5 h-5" /> Pay Now via App
+                    <Smartphone className="w-5 h-5" /> Pay Now via PhonePe
                   </a>
                   <a
                     href={generatedUpiLink}
@@ -294,10 +296,21 @@ function PaymentGate({ isMobile, onConfirmed, onClose, upiId, upiPayee }) {
                   <div className="w-56 h-56 bg-zinc-50 border-2 border-dashed border-zinc-300 rounded-2xl flex flex-col items-center justify-center p-4">
                     <UpiQRCode upiLink={generatedUpiLink} size={180} />
                   </div>
+                  <div>
+<img
+    src={phonepeLogo}
+    alt="PhonePe"
+    className="h-8 w-auto"
+  />
+                  </div>
                   <div className="text-center bg-zinc-50 px-6 py-3 rounded-xl border border-zinc-100 w-full">
-                    <p className="text-xs text-zinc-500 uppercase font-bold tracking-wider mb-1">
+                    
+  
+ 
+
+                    {/* <p className="text-xs text-zinc-500 uppercase font-bold tracking-wider mb-1">
                       Scan to Pay
-                    </p>
+                    </p> */}
                     <p className="text-2xl font-black text-zinc-900 mb-2">
                       ₹{amount}
                     </p>
